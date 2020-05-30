@@ -1,10 +1,11 @@
 // Copyright (c) 2018, Brandon Lehmann, The TurtleCoin Developers
+// Copyright (c) 2019-2020, Deeterd, The Cirquity Developers
 //
 // Please see the included LICENSE file for more information.
 
 'use strict'
 
-const TurtleCoindRPC = require('turtlecoin-rpc').TurtleCoind
+const CirquitydRPC = require('cirquity-rpc').Cirquityd
 const WebSocket = require('./lib/websocket.js')
 const pty = require('node-pty')
 const util = require('util')
@@ -23,9 +24,9 @@ const daemonResponses = {
 }
 const blockTargetTime = 30
 
-const TurtleCoind = function (opts) {
+const Cirquityd = function (opts) {
   opts = opts || {}
-  if (!(this instanceof TurtleCoind)) return new TurtleCoind(opts)
+  if (!(this instanceof Cirquityd)) return new Cirquityd(opts)
 
   /*
     This is NOT where you set your options at. If you're changing
@@ -42,10 +43,10 @@ const TurtleCoind = function (opts) {
   this.enableWebSocket = (typeof opts.enableWebSocket === 'undefined') ? true : opts.enableWebSocket
   this.webSocketPassword = opts.webSocketPassword || false
 
-  // Begin TurtleCoind options
-  this.path = opts.path || path.resolve(__dirname, './TurtleCoind' + ((os.platform() === 'win32') ? '.exe' : ''))
-  this.dataDir = opts.dataDir || path.resolve(os.homedir(), './.TurtleCoin')
-  this.logFile = opts.logFile || path.resolve(__dirname, './TurtleCoind.log')
+  // Begin Cirquityd options
+  this.path = opts.path || path.resolve(__dirname, './Cirquityd' + ((os.platform() === 'win32') ? '.exe' : ''))
+  this.dataDir = opts.dataDir || path.resolve(os.homedir(), './.Cirquity')
+  this.logFile = opts.logFile || path.resolve(__dirname, './Cirquityd.log')
   this.logLevel = opts.logLevel || 2
   this.enableCors = opts.enableCors || false
   this.enableBlockExplorer = (typeof opts.enableBlockExplorer === 'undefined') ? true : opts.enableBlockExplorer
@@ -122,9 +123,9 @@ const TurtleCoind = function (opts) {
     }
   })
 }
-inherits(TurtleCoind, EventEmitter)
+inherits(Cirquityd, EventEmitter)
 
-TurtleCoind.prototype.start = function () {
+Cirquityd.prototype.start = function () {
   var databaseLockfile = path.resolve(util.format('%s/DB/LOCK', this.dataDir))
   if (fs.existsSync(databaseLockfile)) {
     this.emit('error', 'Database LOCK file exists...')
@@ -150,7 +151,7 @@ TurtleCoind.prototype.start = function () {
       return false
     }
   }
-  this.emit('info', 'Attempting to start turtlecoind-ha...')
+  this.emit('info', 'Attempting to start cirquityd-ha...')
   if (!fs.existsSync(this.path)) {
     this.emit('error', '************************************************')
     this.emit('error', util.format('%s could not be found', this.path))
@@ -218,7 +219,7 @@ TurtleCoind.prototype.start = function () {
   this.emit('start', util.format('%s%s', this.path, args.join(' ')))
 }
 
-TurtleCoind.prototype.stop = function () {
+Cirquityd.prototype.stop = function () {
   // If we are currently running our checks, it's a good idea to stop them before we go kill the child process
   if (this.checkDaemon) {
     clearInterval(this.checkDaemon)
@@ -233,11 +234,11 @@ TurtleCoind.prototype.stop = function () {
   }, (this.timeout * 2))
 }
 
-TurtleCoind.prototype.write = function (data) {
+Cirquityd.prototype.write = function (data) {
   this._write(util.format('%s\r', data))
 }
 
-TurtleCoind.prototype._checkChildStdio = function (data) {
+Cirquityd.prototype._checkChildStdio = function (data) {
   if (data.indexOf(daemonResponses.started) !== -1) {
     this.emit('started')
   } else if (data.indexOf(daemonResponses.help) !== -1) {
@@ -253,7 +254,7 @@ TurtleCoind.prototype._checkChildStdio = function (data) {
   }
 }
 
-TurtleCoind.prototype._triggerDown = function () {
+Cirquityd.prototype._triggerDown = function () {
   if (!this.firstCheckPassed) return
   if (!this.trigger) {
     this.trigger = setTimeout(() => {
@@ -262,7 +263,7 @@ TurtleCoind.prototype._triggerDown = function () {
   }
 }
 
-TurtleCoind.prototype._triggerUp = function () {
+Cirquityd.prototype._triggerUp = function () {
   if (!this.firstCheckPassed) this.firstCheckPassed = true
   if (this.trigger) {
     clearTimeout(this.trigger)
@@ -270,7 +271,7 @@ TurtleCoind.prototype._triggerUp = function () {
   }
 }
 
-TurtleCoind.prototype._checkServices = function () {
+Cirquityd.prototype._checkServices = function () {
   if (!this.synced) {
     this.synced = true
     this.checkDaemon = setInterval(() => {
@@ -304,7 +305,7 @@ TurtleCoind.prototype._checkServices = function () {
   }
 }
 
-TurtleCoind.prototype._checkRpc = function () {
+Cirquityd.prototype._checkRpc = function () {
   return Promise.all([
     this.api.info(),
     this.api.height()
@@ -318,7 +319,7 @@ TurtleCoind.prototype._checkRpc = function () {
     }).catch(err => { throw new Error(util.format('Daemon is not passing checks...: %s', err)) })
 }
 
-TurtleCoind.prototype._checkDaemon = function () {
+Cirquityd.prototype._checkDaemon = function () {
   return new Promise((resolve, reject) => {
     this.help = false
     this.write('help')
@@ -329,11 +330,11 @@ TurtleCoind.prototype._checkDaemon = function () {
   })
 }
 
-TurtleCoind.prototype._write = function (data) {
+Cirquityd.prototype._write = function (data) {
   this.child.write(data)
 }
 
-TurtleCoind.prototype._buildargs = function () {
+Cirquityd.prototype._buildargs = function () {
   var args = ''
   if (this.dataDir) args = util.format('%s --data-dir %s', args, this.dataDir)
   if (this.logFile) args = util.format('%s --log-file %s', args, this.logFile)
@@ -385,15 +386,15 @@ TurtleCoind.prototype._buildargs = function () {
   return args.split(' ')
 }
 
-TurtleCoind.prototype._setupAPI = function () {
-  this.api = new TurtleCoindRPC({
+Cirquityd.prototype._setupAPI = function () {
+  this.api = new CirquitydRPC({
     host: this.rpcBindIp,
     port: this.rpcBindPort,
     timeout: this.timeout
   })
 }
 
-TurtleCoind.prototype._setupWebSocket = function () {
+Cirquityd.prototype._setupWebSocket = function () {
   if (this.enableWebSocket) {
     this.webSocket = new WebSocket({
       port: (this.rpcBindPort + 1),
@@ -491,7 +492,7 @@ TurtleCoind.prototype._setupWebSocket = function () {
   }
 }
 
-TurtleCoind.prototype._registerWebSocketClientEvents = function (socket) {
+Cirquityd.prototype._registerWebSocketClientEvents = function (socket) {
   var that = this
   var events = Object.getPrototypeOf(this.api)
   events = Object.getOwnPropertyNames(events).filter((f) => {
@@ -532,4 +533,4 @@ function precisionRound (number, precision) {
   return Math.round(number * factor) / factor
 }
 
-module.exports = TurtleCoind
+module.exports = Cirquityd

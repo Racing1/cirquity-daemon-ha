@@ -1,10 +1,10 @@
-[![NPM](https://nodei.co/npm/turtlecoind-ha.png?downloads=true&stars=true)](https://nodei.co/npm/turtlecoind-ha/)
+[![NPM](https://nodei.co/npm/cirquityd-ha.png?downloads=true&stars=true)](https://nodei.co/npm/cirquityd-ha/)
 
-[![Build Status](https://travis-ci.org/brandonlehmann/turtlecoind-ha.png?branch=master)](https://travis-ci.org/brandonlehmann/turtlecoind-ha) [![Build Status](https://ci.appveyor.com/api/projects/status/github/brandonlehmann/turtlecoind-ha?branch=master&svg=true)](https://ci.appveyor.com/project/brandonlehmann/turtlecoind-ha/branch/master)
+[![Build Status](https://travis-ci.org/brandonlehmann/cirquityd-ha.png?branch=master)](https://travis-ci.org/brandonlehmann/cirquityd-ha) [![Build Status](https://ci.appveyor.com/api/projects/status/github/brandonlehmann/cirquityd-ha?branch=master&svg=true)](https://ci.appveyor.com/project/brandonlehmann/cirquityd-ha/branch/master)
 
-# TurtleCoind High-Availability Daemon Wrapper
+# Cirquityd High-Availability Daemon Wrapper
 
-This project is designed to wrap the TurtleCoind daemon on a *nix system and monitor it for hangups, locks, fork, or other events that cause the daemon to stop responding to requests in an accurate manner.
+This project is designed to wrap the Cirquityd daemon on a *nix system and monitor it for hangups, locks, fork, or other events that cause the daemon to stop responding to requests in an accurate manner.
 
 The sample **service.js** includes how to automatically restart the daemon if it hangs, locks, or otherwise stops responding.
 
@@ -17,7 +17,7 @@ The sample **service.js** includes how to automatically restart the daemon if it
 5. [Documentation](#documentation)
    1. [Methods](#methods)
    2. [Events](#events)
-   3. [TurtleCoind RPC API Interface](#turtlecoind-rpc-api-interface)
+   3. [Cirquityd RPC API Interface](#cirquityd-rpc-api-interface)
    4. [WebSocket Connections](#websocket-connections)
 
 ## To Do
@@ -27,20 +27,20 @@ N/A
 ## Dependencies
 
 * [NodeJS v8.x](https://nodejs.org/)
-* [TurtleCoind](https://github.com/turtlecoin/turtlecoin/releases) v0.19.0 or higher
+* [Cirquityd](https://github.com/cirquity/cirquity/releases) v0.4.1 or higher
 
 ## Easy Start
 
-You *must* copy ```TurtleCoind``` into the ```turtlecoind-ha``` folder for the easy start process to occur.
+You *must* copy ```Cirquityd``` into the ```cirquity-daemon-ha``` folder for the easy start process to occur.
 
 ```bash
-git clone https://github.com/turtlecoin/turtlecoind-ha.git
-cd turtlecoind-ha
-cp <TurtleCoind> .
+git clone https://github.com/cirquity/cirquity-daemon-ha.git
+cd cirquity-daemon-ha
+cp <Cirquityd> .
 sudo npm install & npm start
 ```
 
-The installation will also download the latest checkpoints. Please see [TurtleCoin Checkpoints](http://checkpoints.turtlecoin.lol) for more information.
+The installation will also download the latest checkpoints. Please see [Cirquity Checkpoints](http://checkpoint.cirquity.com) for more information.
 
 ## Keep it Running
 
@@ -52,7 +52,7 @@ npm install -g pm2
 pm2 startup
 pm2 install pm2-logrotate
 
-pm2 start service.js --name turtlecoind
+pm2 start service.js --name cirquityd
 pm2 save
 ```
 
@@ -68,11 +68,11 @@ npm run checkpoints
 
 ### Initialization
 
-Practically all TurtleCoind command line arguments are exposed in the constructor method. Simply include them in your list of options to get activate or use them. Default values are defined below.
+Practically all Cirquityd command line arguments are exposed in the constructor method. Simply include them in your list of options to get activate or use them. Default values are defined below.
 
 ```javascript
-var daemon = new TurtleCoind({
-  // These are our TurtleCoind-ha options
+var daemon = new Cirquityd({
+  // These are our cirquity-daemon-ha options
   pollingInterval: 10000, // How often to check the daemon in milliseconds
   maxPollingFailures: 3, // How many polling intervals can fail before we emit a down event?
   checkHeight: true, // Check the daemon block height against known trusted nodes
@@ -83,9 +83,9 @@ var daemon = new TurtleCoind({
   enableWebSocket: false, // Enables a socket.io websocket server on the rpcBindPort + 1
   webSocketPassword: false, // Set this to a password to use for the privileged socket events.
 
-  // These are the standard TurtleCoind options
-  path: './TurtleCoind', // Where can I find TurtleCoind?
-  dataDir: '~/.TurtleCoin', // Where do you store your blockchain?
+  // These are the standard Cirquityd options
+  path: './Cirquityd', // Where can I find Cirquityd?
+  dataDir: '~/.Cirquity', // Where do you store your blockchain?
   enableCors: false, // Enable CORS support for the domain in this value
   enableBlockExplorer: true, // Enable the block explorer
   enableBlockExplorerDetailed: false, // Enable the detailed block explorer
@@ -232,7 +232,7 @@ daemon.on('data', (data) => {
 
 ### Event - *desync*
 
-This event is emitted when the daemon has lost synchronization with the TurtleCoin network
+This event is emitted when the daemon has lost synchronization with the Cirquity network
 
 ```javascript
 daemon.on('descync', (daemonHeight, networkHeight, deviance) => {
@@ -272,7 +272,7 @@ daemon.on('info', (info) => {
 
 ### Event - *ready*
 
-This event is emitted when the daemon is synchronized with the TurtleCoin network and is passing all the checks we have for it. It returns the equivalent of a */getinfo* call to the RPC server with a few minor additions.
+This event is emitted when the daemon is synchronized with the Cirquity network and is passing all the checks we have for it. It returns the equivalent of a */getinfo* call to the RPC server with a few minor additions.
 
 ```javascript
 daemon.on('ready', (info) => {
@@ -304,7 +304,7 @@ daemon.on('ready', (info) => {
 
 ### Event - *start*
 
-This event is emitted when the daemon starts. The callback contains the command line arguments supplied to TurtleCoind.
+This event is emitted when the daemon starts. The callback contains the command line arguments supplied to Cirquityd.
 
 ```javascript
 daemon.on('start', (executablePath, args) => {
@@ -334,7 +334,7 @@ daemon.on('stopped', () => {
 
 ### Event - *synced*
 
-This event is emitted when the daemon has synchronized with the TurtleCoin network.
+This event is emitted when the daemon has synchronized with the Cirquity network.
 
 ```javascript
 daemon.on('synced', () => {
@@ -361,9 +361,9 @@ daemon.on('topblock', (height) => {
   // do something
 })
 ```
-## TurtleCoind RPC API Interface
+## Cirquityd RPC API Interface
 
-As we can actually run this wrapper inside another nodeJS project, we expose all of the TurtleCoind RPC API commands via the ```daemon.api``` property. Each of the below methods are [Javascript Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises). For safety sake, **always** handle your promise catches as we do use them properly.
+As we can actually run this wrapper inside another nodeJS project, we expose all of the Cirquityd RPC API commands via the ```daemon.api``` property. Each of the below methods are [Javascript Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises). For safety sake, **always** handle your promise catches as we do use them properly.
 
 Methods noted having options have parameters that may be *optional* or *required* as documented.
 
@@ -939,5 +939,6 @@ All responses except for ***auth*** return data in the same format.
 ## License
 
 Copyright (c) 2018, Brandon Lehmann, The TurtleCoin Developers
+Copyright (c) 2019-2020, Deeterd, The Cirquity Developers
 
 Please see the included LICENSE file for more information.

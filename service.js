@@ -1,10 +1,11 @@
 // Copyright (c) 2018-2019, Brandon Lehmann, The TurtleCoin Developers
+// Copyright (c) 2019-2020, Deeterd, The Cirquity Developers
 //
 // Please see the included LICENSE file for more information.
 
 'use strict'
 
-const TurtleCoind = require('./')
+const Cirquityd = require('./')
 const util = require('util')
 
 const metrics = []
@@ -31,7 +32,7 @@ try {
   log('@pm2/io module not installed, ignoring...')
 }
 
-var daemon = new TurtleCoind({
+var daemon = new Cirquityd({
   loadCheckpoints: './checkpoints.csv'
   // Load additional daemon parameters here
 })
@@ -47,7 +48,7 @@ function resetMetrics (metrics) {
 }
 
 daemon.on('start', (args) => {
-  log(util.format('TurtleCoind has started... %s', args))
+  log(util.format('Cirquityd has started... %s', args))
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('starting')
@@ -55,7 +56,7 @@ daemon.on('start', (args) => {
 })
 
 daemon.on('started', () => {
-  log('TurtleCoind is attempting to synchronize with the network...')
+  log('Cirquityd is attempting to synchronize with the network...')
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('started')
@@ -63,7 +64,7 @@ daemon.on('started', () => {
 })
 
 daemon.on('syncing', (info) => {
-  log(util.format('TurtleCoind has synchronized %s out of %s blocks [%s%]', info.height, info.network_height, info.percent))
+  log(util.format('Cirquityd has synchronized %s out of %s blocks [%s%]', info.height, info.network_height, info.percent))
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('synchronizing')
@@ -72,7 +73,7 @@ daemon.on('syncing', (info) => {
 })
 
 daemon.on('synced', () => {
-  log('TurtleCoind is synchronized with the network...')
+  log('Cirquityd is synchronized with the network...')
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('synchronized')
@@ -80,7 +81,7 @@ daemon.on('synced', () => {
 })
 
 daemon.on('ready', (info) => {
-  log(util.format('TurtleCoind is waiting for connections at %s @ %s - %s H/s', info.height, info.difficulty, info.globalHashRate))
+  log(util.format('Cirquityd is waiting for connections at %s @ %s - %s H/s', info.height, info.difficulty, info.globalHashRate))
   if (metrics.length !== 0) {
     metrics[0].set('waiting for connections')
     metrics[2].set(info.height)
@@ -90,7 +91,7 @@ daemon.on('ready', (info) => {
 })
 
 daemon.on('desync', (daemon, network, deviance) => {
-  log(util.format('TurtleCoind is currently off the blockchain by %s blocks. Network: %s  Daemon: %s', deviance, network, daemon))
+  log(util.format('Cirquityd is currently off the blockchain by %s blocks. Network: %s  Daemon: %s', deviance, network, daemon))
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('desynchronized')
@@ -99,7 +100,7 @@ daemon.on('desync', (daemon, network, deviance) => {
 })
 
 daemon.on('down', () => {
-  log('TurtleCoind is not responding... stopping process...')
+  log('Cirquityd is not responding... stopping process...')
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set('down')
@@ -108,7 +109,7 @@ daemon.on('down', () => {
 })
 
 daemon.on('stopped', (exitcode) => {
-  log(util.format('TurtleCoind has closed (exitcode: %s)... restarting process...', exitcode))
+  log(util.format('Cirquityd has closed (exitcode: %s)... restarting process...', exitcode))
   if (metrics.length !== 0) {
     resetMetrics(metrics)
     metrics[0].set(`stopped (code: ${exitcode})`)
