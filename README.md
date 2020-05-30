@@ -938,7 +938,9 @@ All responses except for ***auth*** return data in the same format.
 
 ## License
 
-Copyright (c) 2018, Brandon Lehmann, The TurtleCoin Developers
-Copyright (c) 2019-2020, Deeterd, The Cirquity Developers
+```
+Copyright (C) 2018 Brandon Lehmann, The Turtlecoin Developers
+Copyright (c) 2019-2020 Deeterd, The Cirquity Developers
 
 Please see the included LICENSE file for more information.
+```
