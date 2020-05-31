@@ -31,20 +31,18 @@ N/A
 
 ## Easy Start
 
-You *must* copy ```Cirquityd``` into the ```cirquity-daemon-ha``` folder for the easy start process to occur.
+You *must* copy ```cirquityd``` into the ```cirquity-daemon-ha``` folder for the easy start process to occur.
 
 ```bash
 git clone https://github.com/cirquity/cirquity-daemon-ha.git
 cd cirquity-daemon-ha
-cp <Cirquityd> .
+cp <cirquityd> .
 sudo npm install & npm start
 ```
 
 The installation will also download the latest checkpoints. Please see [Cirquity Checkpoints](http://checkpoint.cirquity.com) for more information.
 
 ## Keep it Running
-
-I'm a big fan of PM2 so if you don't have it installed, the setup is quite simple.
 
 ```bash
 npm install -g pm2
