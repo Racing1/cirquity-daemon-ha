@@ -1,6 +1,6 @@
-[![NPM](https://nodei.co/npm/cirquityd-ha.png?downloads=true&stars=true)](https://nodei.co/npm/cirquityd-ha/)
+[![NPM](https://nodei.co/npm/cirquityd-daemon-ha.png?downloads=true&stars=true)](https://nodei.co/npm/cirquityd-daemon-ha/)
 
-[![Build Status](https://travis-ci.org/brandonlehmann/cirquityd-ha.png?branch=master)](https://travis-ci.org/brandonlehmann/cirquityd-ha) [![Build Status](https://ci.appveyor.com/api/projects/status/github/brandonlehmann/cirquityd-ha?branch=master&svg=true)](https://ci.appveyor.com/project/brandonlehmann/cirquityd-ha/branch/master)
+[![Build Status](https://travis-ci.org/cirquity/cirquityd-daemon-ha.png?branch=master)](https://travis-ci.org/cirquity/cirquityd-daemon-ha) [![Build Status](https://ci.appveyor.com/api/projects/status/github/cirquity/cirquityd-daemon-ha?branch=master&svg=true)](https://ci.appveyor.com/project/cirquity/cirquityd-daemon-ha/branch/master)
 
 # Cirquityd High-Availability Daemon Wrapper
 
@@ -153,70 +153,34 @@ daemon.on('block', (blockInfo) => {
 
 ```javascript
 {
-  "alreadyGeneratedCoins": "1484230931125",
-  "alreadyGeneratedTransactions": 974921,
-  "baseReward": 2935998,
-  "blockSize": 48846,
-  "depth": 0,
-  "difficulty": 358164537,
-  "effectiveSizeMedian": 100000,
-  "hash": "f11580d74134ac34673c74f8da458080aacbe1eccea05b197e9d10bde05139f5",
-  "height": 501854,
-  "major_version": 4,
-  "minor_version": 0,
-  "nonce": 214748383,
-  "orphan_status": false,
-  "penalty": 0,
-  "prev_hash": "674046ea53a8673c630bd34655c4723199e69fdcfd518503f4c714e16a7121b5",
-  "reward": 2936608,
-  "sizeMedian": 231,
-  "timestamp": 1527891820,
-  "totalFeeAmount": 610,
-  "transactions": [
+  major_version: 4,
+  minor_version: 0,
+  timestamp: 1590887005,
+  prev_hash: '1af37ba559f94a6629153bb7fd24e8e857ec192a03af6ce0c23195d2dd8209b3',
+  nonce: 285623,
+  orphan_status: false,
+  height: 360489,
+  depth: 0,
+  hash: 'a062a76916107596207eb8023a09c8ae6eda3b82765f19ce3bed5df6cac2487b',
+  difficulty: 1254680,
+  reward: 2948385,
+  blockSize: 971,
+  transactionsCumulativeSize: 343,
+  alreadyGeneratedCoins: '1068614992054',
+  alreadyGeneratedTransactions: 418224,
+  sizeMedian: 343,
+  baseReward: 2948385,
+  penalty: 0,
+  effectiveSizeMedian: 100000,
+  transactions: [
     {
-      "amount_out": 2936608,
-      "fee": 0,
-      "hash": "61b29d7a3fe931928388f14cffb5e705a68db219e1df6b4e15aee39d1c2a16e8",
-      "size": 266
-    },
-    {
-      "amount_out": 2005890,
-      "fee": 110,
-      "hash": "8096a55ccd0d4a736b3176836429905f349c3de53dd4e92d34f4a2db7613dc4b",
-      "size": 2288
-    },
-    {
-      "amount_out": 3999900,
-      "fee": 100,
-      "hash": "304a068cbe87cd02b48f80f8831197174b133870d0c118d1fe65d07a33331c4e",
-      "size": 2691
-    },
-    {
-      "amount_out": 7862058,
-      "fee": 100,
-      "hash": "29c0d6708e8148eec6e02173b3bab0093768e5f486f553939495a47f883b4445",
-      "size": 9638
-    },
-    {
-      "amount_out": 6951392,
-      "fee": 100,
-      "hash": "fe661f11a0ba9838610c147f70813c17755ab608c7b033f6432c0b434671182c",
-      "size": 10004
-    },
-    {
-      "amount_out": 6800150,
-      "fee": 100,
-      "hash": "4b0366f79ec341cf60d5ef8c9dd8e65974dacb1be1d30dc0bf11d2d9d8240b46",
-      "size": 11493
-    },
-    {
-      "amount_out": 7260417,
-      "fee": 100,
-      "hash": "066b86268b7bb2f780ed76f452d1e6f7213dc6cae273b71fbd4ba378befaed00",
-      "size": 12155
+      hash: '22dd55ac0ab270976438ceb5cc17620dffa45761b683327837bb27824c29e425',
+      fee: 0,
+      amount_out: 2948385,
+      size: 343
     }
   ],
-  "transactionsCumulativeSize": 48535
+  totalFeeAmount: 0
 }
 ```
 
@@ -284,21 +248,26 @@ daemon.on('ready', (info) => {
 
 ```javascript
 {
-  "alt_blocks_count": 1,
-  "difficulty": 250799029,
-  "grey_peerlist_size": 4995,
-  "hashrate": 8359967,
-  "height": 502282,
-  "incoming_connections_count": 8,
-  "last_known_block_index": 340143,
-  "network_height": 502282,
-  "outgoing_connections_count": 8,
-  "status": "OK",
-  "synced": true,
-  "tx_count": 473402,
-  "tx_pool_size": 0,
-  "version": "0.5.0",
-  "white_peerlist_size": 602
+  height: 360496,
+  difficulty: 858595,
+  tx_count: 57734,
+  tx_pool_size: 0,
+  alt_blocks_count: 0,
+  outgoing_connections_count: 8,
+  incoming_connections_count: 3,
+  white_peerlist_size: 8,
+  grey_peerlist_size: 38,
+  last_known_block_index: 360494,
+  network_height: 360496,
+  supported_height: 1000000,
+  hashrate: 28619,
+  synced: true,
+  major_version: 4,
+  minor_version: 0,
+  version: '0.4.1',
+  status: 'OK',
+  start_time: 1590887292,
+  globalHashRate: 28620
 }
 ```
 
@@ -361,500 +330,10 @@ daemon.on('topblock', (height) => {
   // do something
 })
 ```
-## Cirquityd RPC API Interface
-
-As we can actually run this wrapper inside another nodeJS project, we expose all of the Cirquityd RPC API commands via the ```daemon.api``` property. Each of the below methods are [Javascript Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises). For safety sake, **always** handle your promise catches as we do use them properly.
-
-Methods noted having options have parameters that may be *optional* or *required* as documented.
-
-### daemon.api.getBlocks(options)
-
-Returns information on the last 30 blocks before *height* (inclusive).
-
-```options.height``` The height of the blockchain to start at - *required*
-
-#### Example Data
-
-```javascript
-[
-  {
-    "cumul_size": 22041,
-    "difficulty": 285124963,
-    "hash": "62f0058453292af5e1aa070f8526f7642ab6974c6af2c17088c21b31679c813d",
-    "height": 500000,
-    "timestamp": 1527834137,
-    "tx_count": 4
-  },
-  {
-    "cumul_size": 384,
-    "difficulty": 258237161,
-    "hash": "74a45602da61b8b8ff565b1c81c854416046a23ca53f4416684ffaa60bc50796",
-    "height": 499999,
-    "timestamp": 1527834031,
-    "tx_count": 1
-  },
-  {
-    "cumul_size": 418,
-    "difficulty": 256087255,
-    "hash": "ed628ff13eacd5b99c5d7bcb3aeb29ef8fc61dbb21d48b65e0cdaf5ab21211c1",
-    "height": 499998,
-    "timestamp": 1527834020,
-    "tx_count": 1
-  }
-]
-```
-
-### daemon.api.getBlock(options)
-
-Returns information on a single block
-
-```options.hash``` Block hash of the block you wish to retrieve - *required*
-
-#### Sample Data
-
-```javascript
-{
-  "alreadyGeneratedCoins": "1484230931125",
-  "alreadyGeneratedTransactions": 974921,
-  "baseReward": 2935998,
-  "blockSize": 48846,
-  "depth": 0,
-  "difficulty": 358164537,
-  "effectiveSizeMedian": 100000,
-  "hash": "f11580d74134ac34673c74f8da458080aacbe1eccea05b197e9d10bde05139f5",
-  "height": 501854,
-  "major_version": 4,
-  "minor_version": 0,
-  "nonce": 214748383,
-  "orphan_status": false,
-  "penalty": 0,
-  "prev_hash": "674046ea53a8673c630bd34655c4723199e69fdcfd518503f4c714e16a7121b5",
-  "reward": 2936608,
-  "sizeMedian": 231,
-  "timestamp": 1527891820,
-  "totalFeeAmount": 610,
-  "transactions": [
-    {
-      "amount_out": 2936608,
-      "fee": 0,
-      "hash": "61b29d7a3fe931928388f14cffb5e705a68db219e1df6b4e15aee39d1c2a16e8",
-      "size": 266
-    },
-    {
-      "amount_out": 2005890,
-      "fee": 110,
-      "hash": "8096a55ccd0d4a736b3176836429905f349c3de53dd4e92d34f4a2db7613dc4b",
-      "size": 2288
-    },
-    {
-      "amount_out": 3999900,
-      "fee": 100,
-      "hash": "304a068cbe87cd02b48f80f8831197174b133870d0c118d1fe65d07a33331c4e",
-      "size": 2691
-    },
-    {
-      "amount_out": 7862058,
-      "fee": 100,
-      "hash": "29c0d6708e8148eec6e02173b3bab0093768e5f486f553939495a47f883b4445",
-      "size": 9638
-    },
-    {
-      "amount_out": 6951392,
-      "fee": 100,
-      "hash": "fe661f11a0ba9838610c147f70813c17755ab608c7b033f6432c0b434671182c",
-      "size": 10004
-    },
-    {
-      "amount_out": 6800150,
-      "fee": 100,
-      "hash": "4b0366f79ec341cf60d5ef8c9dd8e65974dacb1be1d30dc0bf11d2d9d8240b46",
-      "size": 11493
-    },
-    {
-      "amount_out": 7260417,
-      "fee": 100,
-      "hash": "066b86268b7bb2f780ed76f452d1e6f7213dc6cae273b71fbd4ba378befaed00",
-      "size": 12155
-    }
-  ],
-  "transactionsCumulativeSize": 48535
-}
-```
-
-### daemon.api.getTransaction(options)
-
-Gets information on the single transaction.
-
-```options.hash``` The transaction hash - *required*
-
-#### Sample Data
-
-```javascript
-{
-  "block": {
-    "cumul_size": 22041,
-    "difficulty": 103205633,
-    "hash": "62f0058453292af5e1aa070f8526f7642ab6974c6af2c17088c21b31679c813d",
-    "height": 500000,
-    "timestamp": 1527834137,
-    "tx_count": 4
-  },
-  "status": "OK",
-  "tx": {
-    "extra": "019e430ecdd501714900c71cb45fd49b4fa77ebd4a68d967cc2419ccd4e72378e3020800000000956710b6",
-    "unlock_time": 500040,
-    "version": 1,
-    "vin": [
-      {
-        "type": "ff",
-        "value": {
-          "height": 500000
-        }
-      }
-    ],
-    "vout": [
-      {
-        "amount": 80,
-        "target": {
-          "data": {
-            "key": "5ce69a87940df7ae8443261ff610861d2e4207a7556ef1aa35878c0a5e7e382d"
-          },
-          "type": "02"
-        }
-      },
-      {
-        "amount": 200,
-        "target": {
-          "data": {
-            "key": "7c7f316befaac16ba3782a2ce489e7c0f16c2b733ac0eaa0a72a12ee637822e9"
-          },
-          "type": "02"
-        }
-      },
-      {
-        "amount": 6000,
-        "target": {
-          "data": {
-            "key": "defcb7eb6537bf0a63368ed464df10197e67d7ea8f080e885911cf9ea71abb62"
-          },
-          "type": "02"
-        }
-      },
-      {
-        "amount": 30000,
-        "target": {
-          "data": {
-            "key": "9693e864dba53f308d0b59623c608b6fe16bbdc7cdc75be94f78582d547b46a4"
-          },
-          "type": "02"
-        }
-      },
-      {
-        "amount": 900000,
-        "target": {
-          "data": {
-            "key": "b739e9fbaa3ee976a9ed8ad93a2731ee191c384cf136929e737786573fcd3e96"
-          },
-          "type": "02"
-        }
-      },
-      {
-        "amount": 2000000,
-        "target": {
-          "data": {
-            "key": "5621667d44e7ffb87e5010a5984c188f58a799efb01569e8e42fa2415bb7d14a"
-          },
-          "type": "02"
-        }
-      }
-    ]
-  },
-  "txDetails": {
-    "amount_out": 2936280,
-    "fee": 0,
-    "hash": "702ad5bd04b9eff14b080d508f69a320da1909e989d6c163c18f80ae7a5ab832",
-    "mixin": 0,
-    "paymentId": "",
-    "size": 266
-  }
-}
-```
-
-### daemon.api.getTransactionPool()
-
-Gets the list of transaction hashs in the mempool.
-
-#### Sample Data
-
-```javascript
-[
-  {
-    "amount_out": 1660000,
-    "fee": 0,
-    "hash": "721ae50994d5446d5683ca79d6fa97dce321a39e88e1df70ae433dc67573841b",
-    "size": 13046
-  },
-  {
-    "amount_out": 325000,
-    "fee": 0,
-    "hash": "fc88004d9cd012c0341506f13003da015efec940cffca0baeff0a381c7846203",
-    "size": 28038
-  },
-  {
-    "amount_out": 4040000,
-    "fee": 0,
-    "hash": "de63292050c73db4bb74637910ceab2aef6b9a0b611d0d93e7a757f9c53f975a",
-    "size": 28058
-  },
-  {
-    "amount_out": 10200000,
-    "fee": 0,
-    "hash": "edcd17184bd0c953be009da6b555e90a7cd5fc596f5f560332382995be7b55a7",
-    "size": 28091
-  },
-  {
-    "amount_out": 3380000,
-    "fee": 0,
-    "hash": "e1846775508a750a2f027db46972114e86866d27d304c9178867ae4616b3723c",
-    "size": 28092
-  },
-  {
-    "amount_out": 3960000,
-    "fee": 0,
-    "hash": "015646a75a5279050b5f02df6d5ff9814860fabc8b093818995a4fb6a33e45d8",
-    "size": 28096
-  },
-  {
-    "amount_out": 3860000,
-    "fee": 0,
-    "hash": "5e2f8bcc8c6c9a74e8ce33a66213711b418633eceeefce50042aecb8544676ba",
-    "size": 28097
-  }
-]
-```
-
-### daemon.api.getBlockCount()
-
-Gets the current block count
-
-#### Sample Data
-
-```javascript
-502322
-```
-
-### daemon.api.getBlockHash(options)
-
-Gets a block hash by height.
-
-```options.height``` The height of the block - *required*
-
-#### Sample Data
-
-```text
-74a45602da61b8b8ff565b1c81c854416046a23ca53f4416684ffaa60bc50796
-```
-
-### daemon.api.getBlockTemplate(options)
-
-```options.reserveSize``` Reserve size - *required*
-```options.walletAddress``` Public Wallet Address - *required*
-
-#### Sample Data
-
-```javascript
-{
-  "blocktemplate_blob": "0400...0581",
-  "difficulty": 194635827,
-  "height": 502335,
-  "reserved_offset": 412,
-  "status": "OK"
-}
-```
-
-### daemon.api.submitBlock(options)
-
-```options.blockBlob``` The block blob data - *required*
-
-#### Sample Data
-
-```javascript
-{
-  "status": "OK"
-}
-```
-
-### daemon.api.getLastBlockHeader()
-
-#### Sample Data
-
-```javascript
-{
-  "block_header": {
-    "block_size": 419,
-    "depth": 0,
-    "difficulty": 200671816,
-    "hash": "7d6db7b77232d41c19d898e81c85ecf08c4e8dfa3434f975a319f6261a695739",
-    "height": 502345,
-    "major_version": 4,
-    "minor_version": 0,
-    "nonce": 130876,
-    "num_txes": 1,
-    "orphan_status": false,
-    "prev_hash": "5af657331edff98791720c23aacf72e8b6247ddba2a5c42c93984a46946abd14",
-    "reward": 2935955,
-    "timestamp": 1527907348
-  },
-  "status": "OK"
-}
-```
-
-### daemon.api.getBlockHeaderByHash(options)
-
-```options.hash``` Block hash - *required*
-
-#### Sample Data
-
-```javascript
-{
-  "block_header": {
-    "block_size": 419,
-    "depth": 2,
-    "difficulty": 200671816,
-    "hash": "7d6db7b77232d41c19d898e81c85ecf08c4e8dfa3434f975a319f6261a695739",
-    "height": 502345,
-    "major_version": 4,
-    "minor_version": 0,
-    "nonce": 130876,
-    "num_txes": 1,
-    "orphan_status": false,
-    "prev_hash": "5af657331edff98791720c23aacf72e8b6247ddba2a5c42c93984a46946abd14",
-    "reward": 2935955,
-    "timestamp": 1527907348
-  },
-  "status": "OK"
-}
-```
-
-### daemon.api.getBlockHeaderByHeight(options)
-
-```options.height``` Block height - *required*
-
-#### Sample Data
-
-```javascript
-{
-  "block_header": {
-    "block_size": 419,
-    "depth": 2,
-    "difficulty": 200671816,
-    "hash": "7d6db7b77232d41c19d898e81c85ecf08c4e8dfa3434f975a319f6261a695739",
-    "height": 502345,
-    "major_version": 4,
-    "minor_version": 0,
-    "nonce": 130876,
-    "num_txes": 1,
-    "orphan_status": false,
-    "prev_hash": "5af657331edff98791720c23aacf72e8b6247ddba2a5c42c93984a46946abd14",
-    "reward": 2935955,
-    "timestamp": 1527907348
-  },
-  "status": "OK"
-}
-```
-
-### daemon.api.getCurrencyId()
-
-#### Sample Data
-
-```text
-7fb97df81221dd1366051b2d0bc7f49c66c22ac4431d879c895b06d66ef66f4c
-```
-
-### daemon.api.height()
-
-#### Sample Data
-
-```javascript
-{
-  "height": 502354,
-  "network_height": 502354,
-  "status": "OK"
-}
-```
-
-### daemon.api.info()
-
-#### Sample Data
-
-```javascript
-{
-  "alt_blocks_count": 14,
-  "difficulty": 289121015,
-  "grey_peerlist_size": 4997,
-  "hashrate": 9637367,
-  "height": 502354,
-  "incoming_connections_count": 12,
-  "last_known_block_index": 502352,
-  "network_height": 502354,
-  "outgoing_connections_count": 8,
-  "status": "OK",
-  "synced": true,
-  "tx_count": 473486,
-  "tx_pool_size": 1,
-  "version": "0.5.0",
-  "white_peerlist_size": 1000
-}
-```
-
-### daemon.api.fee()
-
-#### Sample Data
-
-```javascript
-{
-  "address": "TRTLv27NRnfaGLvxDuE1SfQt2zbvfEiTNJtFcBNZwUAAQYL1oxejK1c8PaCTCa61he99a31So9KNaQ4kGkKjjstwhyM2FqdwUyU",
-  "amount": 5000,
-  "status": "OK"
-}
-```
-
-### daemon.api.getTransactions()
-
-#### Sample Data
-
-```javascript
-{
-  "missed_tx": [],
-  "status": "OK",
-  "txs_as_hex": []
-}
-```
-
-### daemon.api.peers()
-
-#### Sample Data
-
-```javascript
-{
-  "peers": [
-    "174.21.179.198:11897",
-    "94.23.49.75:11897",
-    "...",
-    "80.14.183.25:11897",
-    "71.193.1.94:11897"
-  ],
-  "status": "OK"
-}
-```
-
-### daemon.api.sendRawTransaction()
-
-**Note:** This method is not implemented.
 
 ## WebSocket Connections
 
-A WebSocket [socket.io](https://socket.io/) server is initialized if ```enableWebSocket``` is true in the initialization of the module. The server is created on the ```rpcBindPort``` specified + ```1```.
+A WebSocket [socket.io](https://socket.io/) server is initialized if ```enableWebSocket``` is true in the initialization of the module. The server is created on the ```rpcBindPort``` specified - ```2```.
 
 Some events require that the socket is authenticated via a ```auth``` event.
 
@@ -940,7 +419,7 @@ All responses except for ***auth*** return data in the same format.
 
 ```
 Copyright (C) 2018 Brandon Lehmann, The Turtlecoin Developers
-Copyright (c) 2019-2020 Deeterd, The Cirquity Developers
+Copyright (C) 2019-2020 Deeterd, The Cirquity Developers
 
 Please see the included LICENSE file for more information.
 ```
