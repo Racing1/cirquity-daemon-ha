@@ -53,7 +53,7 @@ const Cirquityd = function (opts) {
   this.enableBlockExplorerDetailed = (typeof opts.enableBlockExplorerDetailed === 'undefined') ? true : opts.enableBlockExplorerDetailed
   this.loadCheckpoints = opts.loadCheckpoints || false
   this.rpcBindIp = opts.rpcBindIp || '0.0.0.0'
-  this.rpcBindPort = opts.rpcBindPort || 11898
+  this.rpcBindPort = opts.rpcBindPort || 18128
   this.p2pBindIp = opts.p2pBindIp || false
   this.p2pBindPort = opts.p2pBindPort || false
   this.p2pExternalPort = opts.p2pExternalPort || false
@@ -151,7 +151,7 @@ Cirquityd.prototype.start = function () {
       return false
     }
   }
-  this.emit('info', 'Attempting to start cirquityd-ha...')
+  this.emit('info', 'Attempting to start cirquityd-daemon-ha...')
   if (!fs.existsSync(this.path)) {
     this.emit('error', '************************************************')
     this.emit('error', util.format('%s could not be found', this.path))
@@ -397,7 +397,7 @@ Cirquityd.prototype._setupAPI = function () {
 Cirquityd.prototype._setupWebSocket = function () {
   if (this.enableWebSocket) {
     this.webSocket = new WebSocket({
-      port: (this.rpcBindPort + 1),
+      port: (this.rpcBindPort - 2),
       password: this.webSocketPassword
     })
 
@@ -424,9 +424,9 @@ Cirquityd.prototype._setupWebSocket = function () {
 
     this.webSocket.on('ready', () => {
       if (this.webSocketPassword) {
-        this.emit('info', util.format('Accepting WebSocket connections on %s:%s with password: %s', this.rpcBindIp, (this.rpcBindPort + 1), this.webSocket.password))
+        this.emit('info', util.format('Accepting WebSocket connections on %s:%s with password: %s', this.rpcBindIp, (this.rpcBindPort - 2), this.webSocket.password))
       } else {
-        this.emit('info', util.format('Accepting WebSocket connections on %s:%s', this.rpcBindIp, (this.rpcBindPort + 1)))
+        this.emit('info', util.format('Accepting WebSocket connections on %s:%s', this.rpcBindIp, (this.rpcBindPort - 2)))
       }
     })
 

@@ -82,6 +82,7 @@ daemon.on('synced', () => {
 
 daemon.on('ready', (info) => {
   log(util.format('Cirquityd is waiting for connections at %s @ %s - %s H/s', info.height, info.difficulty, info.globalHashRate))
+  // log(util.inspect(info, false, null, true))
   if (metrics.length !== 0) {
     metrics[0].set('waiting for connections')
     metrics[2].set(info.height)
