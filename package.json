@@ -1,6 +1,6 @@
 {
   "name": "cirquity-daemon-ha",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "Wraps the Cirquity Daemon and helps keep the daemon synchronized and ready for connections.",
   "main": "index.js",
   "scripts": {
