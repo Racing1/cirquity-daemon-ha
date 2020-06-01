@@ -1,7 +1,5 @@
 [![NPM](https://nodei.co/npm/cirquity-daemon-ha.png?downloads=true&stars=true)](https://nodei.co/npm/cirquityd-daemon-ha/)
 
-[![Build Status](https://travis-ci.org/cirquity/cirquity-daemon-ha.png?branch=master)](https://travis-ci.org/cirquity/cirquity-daemon-ha) [![Build Status](https://ci.appveyor.com/api/projects/status/github/cirquity/cirquity-daemon-ha?branch=master&svg=true)](https://ci.appveyor.com/project/cirquity/cirquity-daemon-ha/branch/master)
-
 # Cirquityd High-Availability Daemon Wrapper
 
 This project is designed to wrap the Cirquityd daemon on a *nix system and monitor it for hangups, locks, fork, or other events that cause the daemon to stop responding to requests in an accurate manner.
