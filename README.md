@@ -1,6 +1,6 @@
-[![NPM](https://nodei.co/npm/cirquityd-daemon-ha.png?downloads=true&stars=true)](https://nodei.co/npm/cirquityd-daemon-ha/)
+[![NPM](https://nodei.co/npm/cirquity-daemon-ha.png?downloads=true&stars=true)](https://nodei.co/npm/cirquityd-daemon-ha/)
 
-[![Build Status](https://travis-ci.org/cirquity/cirquityd-daemon-ha.png?branch=master)](https://travis-ci.org/cirquity/cirquityd-daemon-ha) [![Build Status](https://ci.appveyor.com/api/projects/status/github/cirquity/cirquityd-daemon-ha?branch=master&svg=true)](https://ci.appveyor.com/project/cirquity/cirquityd-daemon-ha/branch/master)
+[![Build Status](https://travis-ci.org/cirquity/cirquity-daemon-ha.png?branch=master)](https://travis-ci.org/cirquity/cirquity-daemon-ha) [![Build Status](https://ci.appveyor.com/api/projects/status/github/cirquity/cirquity-daemon-ha?branch=master&svg=true)](https://ci.appveyor.com/project/cirquity/cirquity-daemon-ha/branch/master)
 
 # Cirquityd High-Availability Daemon Wrapper
 
