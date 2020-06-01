@@ -17,8 +17,7 @@ The sample **service.js** includes how to automatically restart the daemon if it
 5. [Documentation](#documentation)
    1. [Methods](#methods)
    2. [Events](#events)
-   3. [Cirquityd RPC API Interface](#cirquityd-rpc-api-interface)
-   4. [WebSocket Connections](#websocket-connections)
+   3. [WebSocket Connections](#websocket-connections)
 
 ## To Do
 
