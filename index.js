@@ -44,7 +44,7 @@ const Cirquityd = function (opts) {
   this.webSocketPassword = opts.webSocketPassword || false
 
   // Begin Cirquityd options
-  this.path = opts.path || path.resolve(__dirname, './Cirquityd' + ((os.platform() === 'win32') ? '.exe' : ''))
+  this.path = opts.path || path.resolve(__dirname, './cirquityd' + ((os.platform() === 'win32') ? '.exe' : ''))
   this.dataDir = opts.dataDir || path.resolve(os.homedir(), './.Cirquity')
   this.logFile = opts.logFile || path.resolve(__dirname, './Cirquityd.log')
   this.logLevel = opts.logLevel || 2
